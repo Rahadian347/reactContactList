@@ -11,12 +11,15 @@ import {
   TableRow,
   TableRowColumn
 } from 'material-ui/Table'
+import './index.css'
+
+//Component
 import ToDo from './ToDoList'
 
+//JSON dummy data
 import dummydata from "./dummydata.json"
 
 const json = dummydata.results[0]
-let data
 
 export default class App extends React.Component {
     constructor(props) {
@@ -78,7 +81,7 @@ export default class App extends React.Component {
                       </TableRow>
               </TableBody>     
             </Table>
-            <ToDo />
+            <ToDo />            
         </div>      
       )    
     }

@@ -14,6 +14,15 @@ export default class App extends Component {
         this.setState({ term: event.target.value });
     }
 
+    onDelete = id => {
+        const result = this.state.items.filter((res, index) => res.id !== id);
+        this.setState(
+        {
+            term: '',
+            items: result
+        });
+    }  
+
     onSubmit = (event) => {
         event.preventDefault();
         this.setState({
@@ -24,12 +33,14 @@ export default class App extends Component {
 
     render() {
         return (
-            <div>
-                <form className="App" onSubmit={this.onSubmit}>
+            <div className="todolist">
+                <p>Input schedule: </p>
+                <form className="form" onSubmit={this.onSubmit}>
                     <input value={this.state.term} onChange={this.onChange} />
-                    <button>Submit</button>
-                </form>
+                    <button>Submit</button>                    
+                </form>                
                 <List items={this.state.items} />
+                <button onDelete={this.onDelete.bind(this)}>Clear</button>
             </div>
         );
     }
