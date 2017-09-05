@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
-import axios from 'axios';
+import React, { Component } from 'react'
+import AppBar from 'material-ui/AppBar'
+import Drawer from 'material-ui/Drawer'
+import MenuItem from 'material-ui/MenuItem'
+import axios from 'axios'
 import {
   Table,
   TableBody,
@@ -10,32 +10,40 @@ import {
   TableHeaderColumn,
   TableRow,
   TableRowColumn
-} from 'material-ui/Table';
+} from 'material-ui/Table'
+import ToDo from './ToDoList'
+
+import dummydata from "./dummydata.json"
+
+const json = dummydata.results[0]
+let data
 
 export default class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+          fetching: true,
           open: false,
-          contact: []
+          data: []
         }
     }
 
-  componentDidMount() {
-    axios.get('https://randomuser.me/api/')
-      .then((result) => {
+    componentWillMount() {
+      axios.get('https://randomuser.me/api/')
+        .then((result) => {
           this.setState({
-            contact: result.data.results[0]
+            data: result.data.results[0],
+            fetching: false
           })
-      })   
-  }  
+        })
+    }  
 
     handleToggle = () => this.setState({ open: !this.state.open });
     handleClose = () => this.setState({ open: false });
     
     render() {
-      if (this.state.contact.location) console.log(this.state.contact.location.city)
-      //console.log(this.state.contact.location.city) i can't use this
+      if (this.state.data.name)
+        console.log(this.state.data.name.first)
       return (
         <div className="App">
             <AppBar
@@ -60,16 +68,17 @@ export default class App extends React.Component {
                   <TableHeaderColumn >Phone</TableHeaderColumn>
                 </TableRow>
               </TableHeader>
-              {/* <TableBody displayRowCheckbox={false}>
+              <TableBody displayRowCheckbox={false}>
                       <TableRow>
                         <TableRowColumn>{1}</TableRowColumn>
-                        <TableRowColumn>{this.state.contact.name.first}</TableRowColumn>
-                        <TableRowColumn>{this.state.contact.gender}</TableRowColumn>
-                        <TableRowColumn>{this.state.contact.email}</TableRowColumn>
-                        <TableRowColumn>{this.state.contact.phone}</TableRowColumn>
+                        <TableRowColumn>{json.name.first}</TableRowColumn>
+                        <TableRowColumn>{json.gender}</TableRowColumn>
+                        <TableRowColumn>{json.email}</TableRowColumn>
+                        <TableRowColumn>{json.phone}</TableRowColumn>
                       </TableRow>
-              </TableBody>      */}
+              </TableBody>     
             </Table>
+            <ToDo />
         </div>      
       )    
     }
