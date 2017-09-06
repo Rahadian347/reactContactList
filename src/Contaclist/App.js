@@ -11,42 +11,35 @@ import {
   TableRow,
   TableRowColumn
 } from 'material-ui/Table'
-import './index.css'
-
-//Component
-import ToDo from './ToDoList'
-
-//JSON dummy data
-import dummydata from "./dummydata.json"
-
-const json = dummydata.results[0]
 
 export default class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-          fetching: true,
+          persons: [],
           open: false,
-          data: []
-        }
+        }        
+    }
+
+    handleClose = () => {
+      this.setState({ open: false });
     }
 
     componentWillMount() {
-      axios.get('https://randomuser.me/api/')
+      axios.get('https://randomuser.me/api/?results=5')
         .then((result) => {
           this.setState({
-            data: result.data.results[0],
-            fetching: false
+            persons: result.data.results            
           })
-        })
-    }  
-
-    handleToggle = () => this.setState({ open: !this.state.open });
-    handleClose = () => this.setState({ open: false });
+       })
+    }
     
     render() {
-      if (this.state.data.name)
-        console.log(this.state.data.name.first)
+
+      if (this.state.persons[0]){} // checking first render empty or not
+
+      const person = this.state.persons 
+
       return (
         <div className="App">
             <AppBar
@@ -72,17 +65,22 @@ export default class App extends React.Component {
                 </TableRow>
               </TableHeader>
               <TableBody displayRowCheckbox={false}>
-                      <TableRow>
-                        <TableRowColumn>{1}</TableRowColumn>
-                        <TableRowColumn>{json.name.first}</TableRowColumn>
-                        <TableRowColumn>{json.gender}</TableRowColumn>
-                        <TableRowColumn>{json.email}</TableRowColumn>
-                        <TableRowColumn>{json.phone}</TableRowColumn>
-                      </TableRow>
-              </TableBody>     
+              {
+                person.map((data, index) => {
+                  return (
+                      <TableRow key={index}>
+                        <TableRowColumn>{index + 1}</TableRowColumn>
+                        <TableRowColumn>{data.name.first}</TableRowColumn>
+                        <TableRowColumn>{data.gender}</TableRowColumn>
+                        <TableRowColumn>{data.email}</TableRowColumn>
+                        <TableRowColumn>{data.phone}</TableRowColumn>
+                      </TableRow>   
+                  )
+                })
+              }
+              </TableBody>  
             </Table>
-            <ToDo />            
         </div>      
-      )    
+      )         
     }
 }
