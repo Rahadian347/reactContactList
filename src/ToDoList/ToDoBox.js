@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+
+import './index.css'
+
 import ToDoList from './ToDoList'
 import ToDoForm from './ToDoForm'
 
@@ -42,7 +45,7 @@ export default class ToDo extends Component {
     handleToggleComplete = (nodeId) => {
         var data = this.state.data
         for (var i in data) {
-            if (data[i].id == nodeId) {
+            if (data[i].id === nodeId) {
                 data[i].complete = data[i].complete === 'true' ? 'false' : 'true';
                 break
             }
