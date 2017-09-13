@@ -10,12 +10,6 @@ export default class ToDoForm extends React.Component {
         }
         this.props.onTaskSubmit(task)
         this.task.value = ''
-        // var task = ReactDOM.findDOMNode(this.refs.task).value.trim()
-        // if (!task) {
-        //     return
-        // }
-        // this.props.onTaskSubmit(task)
-        // ReactDOM.findDOMNode(this.refs.task).value = ''
 
     }
     render() {

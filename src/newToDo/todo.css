@@ -1,0 +1,72 @@
+.container {
+    margin-top: 50px !important;
+    margin: 0 auto;
+    width: 300px;
+    font-family: 'Times New Roman', Times, serif;
+    transition: .5s ease;
+}
+
+.formGroup input {
+    margin-bottom: 4px;
+}
+
+.listGroup {
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.listGroupItem {
+    margin-bottom: 4px !important;
+    border-radius: 3px;
+    padding: 2px 2px;
+    padding-left: 8px;
+    border-style: ridge;
+    border-width: thin;
+    transition: .5s ease;
+}
+
+.listGroupItemSuccess {
+    color: #3c763d;
+    background-color: #dff0d8;
+    margin-bottom: 4px !important;
+    border-radius: 3px;
+    padding: 2px 2px;
+    padding-left: 8px;
+    border-style: ridge;
+    border-width: thin;
+    transition: .5s ease;
+    text-decoration: line-through;
+}
+
+.listGroupItem input {
+    margin-right: 2px;
+    margin-left: auto;
+}
+
+.box {
+    border-width: 2px;
+    border-style: groove;
+}
+
+.boxInside {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.boxInside h3 {
+    text-align: center;
+    font-family: robotto;
+}
+
+.controlLabel {
+    margin-top: 4px;
+    margin-left: 2px;
+}
+
+.buttonClear {
+    margin-bottom: 2px
+}
+
+.filter {
+    margin-top: 4px;
+}
