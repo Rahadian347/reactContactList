@@ -2,7 +2,11 @@ import { observable, computed} from 'mobx'
 
 const id = Date.now()
 
-class ToDoStore {
+class todoStore {
+    constructor(rootStore) {
+        this.rootStore = rootStore
+    }
+    
     @observable todos = [
         {
             'id': id,
@@ -37,13 +41,7 @@ class ToDoStore {
         const clear = this.todos.filter(todo => !todo.complete)
         this.todos.replace(clear)
     }
-    @computed get changeComplete() {
-        if (this.todos.complete)
-            return this.classes + ' success'
-        return this.classes
-    }
 }
 
-var store = window.store = new ToDoStore()
-
-export default store
+// const todoStore = new TodoStore()
+export default todoStore

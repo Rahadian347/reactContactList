@@ -2,7 +2,7 @@
     margin-top: 50px !important;
     margin: 0 auto;
     width: 300px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
     transition: .5s ease;
 }
 
@@ -47,15 +47,23 @@
     border-width: 2px;
     border-style: groove;
 }
+.header {
+    min-height: 35px;
+    background-color: cadetblue;
+    margin-bottom: 8px;
+}
+
+.header h3 {
+    font-style: italic;
+    text-align: center;
+    margin: auto 0;
+    padding-top: 4px;
+    color: aliceblue;
+}
 
 .boxInside {
     padding-left: 10px;
     padding-right: 10px;
-}
-
-.boxInside h3 {
-    text-align: center;
-    font-family: robotto;
 }
 
 .controlLabel {

@@ -1,9 +1,9 @@
 import React from 'react'
-import {observer} from 'mobx-react'
+import {observer, inject} from 'mobx-react'
 import styles from './todo.css'
 import {Button} from 'react-bootstrap'
 
-@observer
+@inject('store') @observer
 export default class ToDoItem extends React.Component {
 
     toggleComplete(todo) {
@@ -16,8 +16,9 @@ export default class ToDoItem extends React.Component {
                 <div className={styles.listGroup}>
                     <div>
                     <label>Task :</label>
+                    <hr/>
                     </div>
-                    { this.props.store.filteredTodo.map(todo => {
+                    { this.props.store.todo.filteredTodo.map(todo => {
                     return (
                         <div key={todo.id}>
                             <div className={todo.complete ? styles.listGroupItemSuccess : styles.listGroupItem} >
@@ -29,7 +30,7 @@ export default class ToDoItem extends React.Component {
                 })}
                     <Button
                         bsStyle='danger'
-                        onClick={this.props.store.clearComplete}
+                        onClick={this.props.store.todo.clearComplete}
                         className={styles.buttonClear} >
                         Clear
                     </Button>

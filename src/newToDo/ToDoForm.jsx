@@ -1,21 +1,21 @@
 import React from 'react'
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import {
     Form, FormGroup, FormControl
 } from 'react-bootstrap'
 import styles from './todo.css'
 
 
-@observer
+@inject('store') @observer
 export default class ToDoForm extends React.Component {
 
     filter(e) {
-        this.props.store.filter = e.target.value
+        this.props.store.todo.filter = e.target.value
     }
 
     createNew(e) {
         if (e.which === 13) {
-            this.props.store.createTodo(e.target.value)
+            this.props.store.todo.createTodo(e.target.value)
             e.target.value = ''
         }
     }
