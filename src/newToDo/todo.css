@@ -36,6 +36,7 @@
     border-width: thin;
     transition: .5s ease;
     text-decoration: line-through;
+    
 }
 
 .listGroupItem input {
@@ -77,4 +78,13 @@
 
 .filter {
     margin-top: 4px;
+}
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+    margin: -12px;
+    position: relative;
+    top: 12px;
+    margin-right: 4px;
+    margin-left: 1px;
 }

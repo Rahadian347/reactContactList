@@ -32,7 +32,7 @@ class App extends React.Component {
             <div>
                 <Tabs
                     id={1}
-                    defaultActiveKey={3}
+                    defaultActiveKey={1}
                     animation={false} >
 
                     <Tab eventKey={1} title='Todo List'><NewToDoListPage /></Tab>
