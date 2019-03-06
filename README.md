@@ -1,3 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+Simple Todo List with ReactJS
 
-Simple Contact list with react JS
+# Demo:
+![](demo.gif)
